@@ -1,45 +1,64 @@
 :root {
-  --board-size: min(92vw, 480px);
-  --square-size: calc(var(--board-size) / 8);
+  --board-max: 92vmin;
+  --square-size: calc(var(--board-max) / 8);
 }
 
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 10px;
-}
-
-#board {
-  display: grid;
-  grid-template-columns: repeat(8, var(--square-size));
-  grid-template-rows: repeat(8, var(--square-size));
-  width: var(--board-size);
-  height: var(--board-size);
-  margin: 20px auto;
-  border: 2px solid black;
+/* Global safety */
+* {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: env(safe-area-inset-top)
+           env(safe-area-inset-right)
+           env(safe-area-inset-bottom)
+           env(safe-area-inset-left);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* BOARD — bulletproof sizing */
+#board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  aspect-ratio: 1 / 1;
+
+  width: min(92vmin, 100%);
+  max-width: 480px;
+
+  margin-top: 12px;
+  border: 2px solid black;
+}
+
+/* SQUARES */
 .square {
-  width: var(--square-size);
-  height: var(--square-size);
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-size: calc(var(--square-size) * 0.65);
   cursor: pointer;
+  user-select: none;
 }
 
-.light {
-  background-color: #f0d9b5;
-}
+/* COLORS */
+.light { background: #f0d9b5; }
+.dark  { background: #b58863; }
 
-.dark {
-  background-color: #b58863;
-}
-
+/* SELECTION */
 .selected {
   outline: 3px solid yellow;
+}
+
+/* Ensure Unicode chess pieces are visible on iOS */
+.square {
+  color: #000;
+  text-shadow:
+    0 0 1px #000,
+    0 0 1px #000;
 }
