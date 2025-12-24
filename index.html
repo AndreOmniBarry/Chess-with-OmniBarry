@@ -8,9 +8,9 @@
     :root{
       --sq-size: clamp(44px, 8vmin, 72px);
       --board-gap: 18px;
-      --bg: #f3f4f6;
+      --bg: #9baf754f;
       --card: #ffffff;
-      --muted: #6b7280;
+      --muted: #000000;
       --accent: #2563eb;
       --accent-2: #ecb408;
     }
@@ -49,7 +49,7 @@
 
     .square{width:var(--sq-size);height:var(--sq-size);display:flex;align-items:center;justify-content:center;font-size:calc(var(--sq-size) * 0.56);user-select:none;position:relative;transition:background .12s, transform .12s}
     .light{background:linear-gradient(180deg,#f7e9c9,#f0d9b5)}
-    .dark{background:linear-gradient(180deg,#b58863 #9a6b43)}
+    .dark{background-color: #b58863};
     .square:hover{transform:translateY(-4px)}
 
     .square.highlight{box-shadow:0 0 0 4px rgba(252,211,77,0.35) inset;border-radius:6px}
