@@ -8,9 +8,7 @@ Includes core chess rules such as **legal move validation, check, checkmate, sta
 
 ## 🚀 Live Demo
 - **Vercel:** https://chess-with-omni-barry.vercel.app/  
-- **GitHub Repo:** https://github.com/YOUR-USERNAME/YOUR-REPO
-
-> Replace the links above after deployment.
+- **GitHub Repo:** https://github.com/AndreOmniBarry/Chess-with-OmniBarry
 
 ---
 
