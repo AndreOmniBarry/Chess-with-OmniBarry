@@ -1,3 +1,4 @@
+
 :root {
   --board-max: 92vmin; /* Board max size relative to viewport */
   --square-size: calc(var(--board-max) / 8);
@@ -27,9 +28,12 @@ body {
 #board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr); /* ADDED: stabilize row heights across Safari/iOS */
   aspect-ratio: 1 / 1; /* ensure perfect square */
   width: min(var(--board-max), 100%);
+  height: min(var(--board-max), 100%); /* ADDED: give Safari a definite height */
   max-width: 480px;
+  max-height: 480px; /* ADDED: keep height in sync with max-width */
   border: 2px solid black;
   overflow: visible; /* prevent clipping of pieces */
   margin-top: 12px;
@@ -44,6 +48,7 @@ body {
   height: 100%;
   
   font-size: clamp(24px, 5vmin, 48px); /* auto-scale font to fit square */
+  line-height: 1; /* ADDED: prevents chess glyphs getting clipped on iOS */
   cursor: pointer;
   user-select: none;
 
